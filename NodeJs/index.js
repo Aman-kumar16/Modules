@@ -1,0 +1,20 @@
+const express = require('express')
+let data = require('./data')
+const cors = require('cors');
+const app=express()
+const PORT=5000
+console.log(data)
+
+
+
+app.use(express.json())
+app.use(cors({
+    origin: '*'
+}));
+
+app.get('/profile',(req,res) => {
+    console.log(data)
+    res.status(200).send(JSON.stringify(data));
+})
+
+app.listen(PORT,()=>console.log('listening on 5000'))
